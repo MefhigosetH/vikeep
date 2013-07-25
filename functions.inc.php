@@ -24,7 +24,7 @@ class vikiAPI {
 	}
 
 	function search($term) {
-		$url = $this->getUrl("search.json?term=".$term."&type=series&app=".$_SERVER['APP_ID']);
+		$url = $this->getUrl("search.json?term=".urlencode($term)."&type=series&app=".$_SERVER['APP_ID']);
 
 		$response = file_get_contents($url);
 		if( $response === FALSE ) {
