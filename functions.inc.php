@@ -34,8 +34,8 @@ class vikiAPI {
 		return json_decode($response,TRUE);
 	}
 
-	function episodes($serie) {
-		$url = $this->getUrl("containers/".$serie."/episodes.json?app=".$_SERVER['APP_ID']);
+	function episodes($serie,$page) {
+		$url = $this->getUrl("containers/".$serie."/episodes.json?page=".$page."&app=".$_SERVER['APP_ID']);
 
 		$response = file_get_contents($url);
 		if( $response === FALSE ) {

@@ -86,13 +86,18 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 }
 elseif( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 	$viki = new vikiAPI();
+
+	if( !isset($_GET['page']) ) {
+		$_GET['page'] = 1;
+	}
+	$_GET['page'] = (int) $_GET['page'];
 ?>
 <!-- SerieResults -->
 <div class="page-header">
 <h1>Select your episode</h1>
 </div>
 <?php
-	$vikiEpisodes = $viki->episodes($_GET['serie']);
+	$vikiEpisodes = $viki->episodes($_GET['serie'],$_GET['page']);
 	$count = count($vikiEpisodes['response']);
 
 	if( $count ) {
@@ -113,13 +118,37 @@ elseif( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 		}
 		echo "</ul></div>\r\n";
 
+		echo "<!-- Paging div -->\r\n";
+		echo "<div class='row'>\r\n";
+		echo "<ul class='pager'>\r\n";
+
+		if( $_GET['page']>1 ) {
+			echo "<li class='previous'>\r\n";
+			echo "<a href='?serie=".$_GET['serie']."&page=".($_GET['page']-1)."'>&larr; Previous</a>\r\n";
+			echo "</li>\r\n";
+		}
+		else {
+			echo "<li class='previous disabled'>\r\n";
+			echo "<a href='#'>&larr; Previous</a>\r\n";
+			echo "</li>\r\n";
+		}
+
+		if($vikiEpisodes['more']) {
+			echo "<li class='next'>\r\n";
+			echo "<a href='?serie=".$_GET['serie']."&page=".($_GET['page']+1)."'>Next &rarr;</a>\r\n";
+			echo "</li>\r\n";
+		}
+		else {
+			echo "<li class='next disabled'>\r\n";
+			echo "<a href='#'>Next &rarr;</a>\r\n";
+			echo "</li>\r\n";
+		}
+
+		echo "</ul></div>\r\n";
 	}
 	else {
 		echo "<p>Sin episodios.</p>";
 	}
-	//echo "<pre>";
-	//print_r($vikiEpisodes);
-	//echo "</pre>";
 }
 elseif( isset($_POST['q']) && !empty($_POST['q']) ) {
 	$viki = new vikiAPI();
