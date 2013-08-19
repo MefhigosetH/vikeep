@@ -182,11 +182,19 @@ elseif( (isset($_POST['q']) && !empty($_POST['q'])) || (isset($_GET['q']) && !em
 			$id = $vikiSearch['response'][$i]['id'];
 
 			if(!empty($episodes)) {
-				echo "<div class='hero-unit text-center'>";
-				echo "<h1>".$title."</h1>";
-				echo "<p><img src='".$poster."' alt='".$title."' class='img-polaroid' /></p>";
-				echo "<p><a class='btn btn-large btn-primary text-left' href='index.php?serie=".$id."' title='View episodes for ".$title."'>Episodes</a> <small>(".$episodes." episodes)</small></p>";
-				echo "</div>";
+				echo "<div class='hero-unit text-center'>\r\n";
+				echo "<h1>".$title."</h1><span class='label label-info'>".$episodes." episodes</span>\r\n";
+				if( $vikiSearch['response'][$i]['flags']['on_air'] == 1 ) {
+					echo "<span class='label label-success'>on-air</span>\r\n";
+				}
+				echo "<p><img src='".$poster."' alt='".$title."' class='img-polaroid' /></p>\r\n";
+				if( $vikiSearch['response'][$i]['flags']['hosted'] == 1 ) {
+					echo "<p><a class='btn btn-large btn-primary text-left' href='index.php?serie=".$id."' title='View episodes for ".$title."'>Show episodes</a></p>\r\n";
+				}
+				else {
+					echo "<div class='alert alert-info'><h4>External</h4> This serie is not hosted at viki.com</div>\r\n";
+				}
+				echo "</div>\r\n";
 			}
 		}
 
