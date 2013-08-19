@@ -23,8 +23,8 @@ class vikiAPI {
 		return $url;
 	}
 
-	function search($term) {
-		$url = $this->getUrl("search.json?term=".urlencode($term)."&type=series&app=".$_SERVER['APP_ID']);
+	function search($term,$page=1) {
+		$url = $this->getUrl("search.json?term=".urlencode($term)."&type=series&page=".$page."&app=".$_SERVER['APP_ID']);
 
 		$response = file_get_contents($url);
 		if( $response === FALSE ) {
@@ -34,7 +34,7 @@ class vikiAPI {
 		return json_decode($response,TRUE);
 	}
 
-	function episodes($serie,$page) {
+	function episodes($serie,$page=1) {
 		$url = $this->getUrl("containers/".$serie."/episodes.json?page=".$page."&app=".$_SERVER['APP_ID']);
 
 		$response = file_get_contents($url);

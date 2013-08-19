@@ -150,15 +150,28 @@ elseif( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 		echo "<p>Sin episodios.</p>";
 	}
 }
-elseif( isset($_POST['q']) && !empty($_POST['q']) ) {
+elseif( (isset($_POST['q']) && !empty($_POST['q'])) || (isset($_GET['q']) && !empty($_GET['q'])) ) {
 	$viki = new vikiAPI();
+	$q = "";
+
+	if( isset($_POST['q']) ) {
+		$q = $_POST['q'];
+	}
+	else {
+		$q = $_GET['q'];
+	}
+
+	if( !isset($_GET['page']) ) {
+		$_GET['page'] = 1;
+	}
+	$_GET['page'] = (int) $_GET['page'];
 ?>
 <!-- SearchResults -->
 <div class="page-header">
-<h1>Search results <small>for <?php echo $_POST['q']; ?></small></h1>
+<h1>Search results <small>for <?php echo $q; ?></small></h1>
 </div>
 <?php
-	$vikiSearch = $viki->search($_POST['q']);
+	$vikiSearch = $viki->search($q,$_GET['page']);
 	$count = count($vikiSearch['response']);
 
 	if( $count ){
@@ -176,6 +189,34 @@ elseif( isset($_POST['q']) && !empty($_POST['q']) ) {
 				echo "</div>";
 			}
 		}
+
+		echo "<!-- Paging div -->\r\n";
+		echo "<div class='row'>\r\n";
+		echo "<ul class='pager'>\r\n";
+
+		if( $_GET['page']>1 ) {
+			echo "<li class='previous'>\r\n";
+			echo "<a href='?q=".$q."&page=".($_GET['page']-1)."'>&larr; Previous</a>\r\n";
+			echo "</li>\r\n";
+		}
+		else {
+			echo "<li class='previous disabled'>\r\n";
+			echo "<a href='#'>&larr; Previous</a>\r\n";
+			echo "</li>\r\n";
+		}
+
+		if($vikiSearch['more']) {
+			echo "<li class='next'>\r\n";
+			echo "<a href='?q=".$q."&page=".($_GET['page']+1)."'>Next &rarr;</a>\r\n";
+			echo "</li>\r\n";
+		}
+		else {
+			echo "<li class='next disabled'>\r\n";
+			echo "<a href='#'>Next &rarr;</a>\r\n";
+			echo "</li>\r\n";
+		}
+
+		echo "</ul></div>\r\n";
 	}
 	else {
 		echo "<p>No results.</p>";
