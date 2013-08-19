@@ -44,7 +44,7 @@ Legal notice:
 	<div class="navbar-inner">
 		<a class="brand" href=".">Vikeep</a>
 		<ul class="nav">
-			<li class="active"><a href="/">Home</a></li>
+			<li class="active"><a href="/"><i class='icon-home'></i> Home</a></li>
 			<li class="active"><a href="https://github.com/MefhigosetH/vikeep">GitHub</a></li>
 		</ul>
 		<p class="navbar-text pull-right">Beta</p>
@@ -70,7 +70,7 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 		echo "<p>Right-click -> Save as...</p>";
 		$strEsUrl = $viki->subtitles($_GET['episode'],"es");
 		$strEnUrl = $viki->subtitles($_GET['episode'],"en");
-		echo "<p><a href='".$strEsUrl."' title='Download spanish subtitles' class='btn btn-large btn-primary'>Spanish</a> <a href='".$strEnUrl."' title='Download english subtitles' class='btn btn-large btn-primary'>English</a></p>";
+		echo "<p><a href='".$strEsUrl."' title='Download spanish subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> Spanish</a> <a href='".$strEnUrl."' title='Download english subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> English</a></p>";
 
 		echo "<h3>2. Download video. Choose your quality:</h3>";
 		echo "<p>Right-click -> Save as...</p>";
@@ -79,7 +79,7 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 			$quality = $stream;
 			$url = $vikiStreams[$stream]['http']['url'];
 
-			echo "<a href='".$url."' title='Download video in ".$quality."' class='btn btn-large btn-primary'>".$quality."</a> ";
+			echo "<a href='".$url."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
 		}
 		echo "</p>";
 	}
@@ -113,7 +113,7 @@ elseif( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 			echo "<img src='".$poster."' alt='Episode ".$number."' />\r\n";
 			echo "<div class='caption'>\r\n";
 			echo "<h3>Episode ".$number."</h3>\r\n";
-			echo "<p><a href='index.php?episode=".$id."' class='btn btn-primary'>Download</a></p>\r\n";
+			echo "<p><a href='index.php?episode=".$id."' class='btn btn-primary'><i class='icon-download icon-white'></i> Download</a></p>\r\n";
 			echo "</div></div></li>\r\n\r\n";
 		}
 		echo "</ul></div>\r\n";
@@ -189,7 +189,7 @@ elseif( (isset($_POST['q']) && !empty($_POST['q'])) || (isset($_GET['q']) && !em
 				}
 				echo "<p><img src='".$poster."' alt='".$title."' class='img-polaroid' /></p>\r\n";
 				if( $vikiSearch['response'][$i]['flags']['hosted'] == 1 ) {
-					echo "<p><a class='btn btn-large btn-primary text-left' href='index.php?serie=".$id."' title='View episodes for ".$title."'>Show episodes</a></p>\r\n";
+					echo "<p><a class='btn btn-large btn-primary text-left' href='index.php?serie=".$id."' title='View episodes for ".$title."'><i class='icon-eye-open icon-white'></i> Show episodes</a></p>\r\n";
 				}
 				else {
 					echo "<div class='alert alert-info'><h4>External</h4> This serie is not hosted at viki.com</div>\r\n";
@@ -240,7 +240,7 @@ else {
 	<p>Search what you want to download from viki.com</p>
 	<form action="index.php" method="post">
 	<input class="input-block-level" id="appendedInputButton" type="text" name="q" autocomplete="off" value="" />
-	<button class="btn btn-large btn-primary" type="submit">Search!</button>
+	<button class="btn btn-large btn-primary" type="submit"><i class="icon-search icon-white"></i> Search!</button>
 	</form>
 </div>
 
