@@ -70,7 +70,10 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 		echo "<p>Right-click -> Save as...</p>";
 		$strEsUrl = $viki->subtitles($_GET['episode'],"es");
 		$strEnUrl = $viki->subtitles($_GET['episode'],"en");
-		echo "<p><a href='".$strEsUrl."' title='Download spanish subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> Spanish</a> <a href='".$strEnUrl."' title='Download english subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> English</a></p>";
+		$strFrUrl = $viki->subtitles($_GET['episode'],"fr");
+		echo "<p><a href='".$strEsUrl."' title='Download Spanish subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> Spanish</a>";
+		echo " <a href='".$strFrUrl."' title='Download French subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> French</a>";
+		echo " <a href='".$strEnUrl."' title='Download English subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> English</a></p>";
 
 		echo "<h3>2. Download video. Choose your quality:</h3>";
 		echo "<p>Right-click -> Save as...</p>";
