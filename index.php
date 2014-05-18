@@ -84,7 +84,7 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 		echo "<p>";
 		foreach( $vikiStreams as $stream => $data ) {
 			$quality = $stream;
-			$url = $vikiStreams[$stream]['http']['url'];
+			$url = $vikiStreams[$stream]['https']['url'];
 
 			echo "<a href='".$url."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
 		}
