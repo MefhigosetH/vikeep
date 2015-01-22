@@ -82,12 +82,11 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 		echo "<h3>2. Download video. Choose your quality:</h3>";
 		echo "<p>Right-click -> Save as...</p>";
 		echo "<p>";
-		foreach( $vikiStreams as $stream => $data ) {
-			$quality = $stream;
-			$url = $vikiStreams[$stream]['https']['url'];
 
-			echo "<a href='".$url."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
+		foreach( $vikiStreams as $quality => $data ) {
+			echo "<a href='stream.php?id=".$_GET['episode']."&quality=".$quality."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
 		}
+
 		echo "</p>";
 	}
 }
