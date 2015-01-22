@@ -85,8 +85,13 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 		echo "<p>";
 
 		foreach( $vikiStreams as $quality => $data ) {
-            $adflyUrl = $adfly->getLink($_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality);
-			echo "<a href='".$adflyUrl."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
+            if( $quality == "external" ) {
+                echo "Sory. No streams available to download :-(";
+            }
+            else {
+                $adflyUrl = $adfly->getLink($_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality);
+			    echo "<a href='".$adflyUrl."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
+            }
 		}
 
 		echo "</p>";
