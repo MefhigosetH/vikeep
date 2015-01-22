@@ -17,17 +17,18 @@ class vikiAPI {
 		$sign = "";
 		$url = "";
 		$url .= $this->apiPath.$string;
-		$url .= "&t=".(time()-242);
+		$url .= "&t=".time();
 
 		$sign = hash_hmac('sha1',$url,$_SERVER['APP_SECRET']);
 
 		$url = $this->apiUrl.$url."&sig=".$sign;
-		//echo $url;
 		return $url;
 	}
 
 	function search($term,$page=1) {
-		$url = $this->getUrl("search.json?term=".urlencode($term)."&type=series&page=".$page."&app=".$_SERVER['APP_ID']);
+        // This HTTP request was sniffed from viki.com site...
+        //GET http://api.viki.io/v4/search.json?c=dre&licensed=0&per_page=5&with_paywall=1&il=en&cl=en&app=100000a&t=1421888623
+		$url = $this->getUrl("search.json?c=".urlencode($term)."&per_page=5&app=".$_SERVER['APP_ID']);
 
 		$response = file_get_contents($url);
 		if( $response === FALSE ) {
