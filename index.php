@@ -56,6 +56,7 @@ Legal notice:
 <?php
 if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 	$viki = new vikiAPI();
+    $adfly = new adflyApi();
 ?>
 <!-- EpisodeResults -->
 <div class="page-header">
@@ -80,11 +81,12 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 		echo "</p>";
 
 		echo "<h3>2. Download video. Choose your quality:</h3>";
-		echo "<p>Right-click -> Save as...</p>";
+		echo "<p>Click, wait 5 sec, and then click again on the right up corner yellow button.</p>";
 		echo "<p>";
 
 		foreach( $vikiStreams as $quality => $data ) {
-			echo "<a href='stream.php?id=".$_GET['episode']."&quality=".$quality."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
+            $adflyUrl = $adfly->getLink($_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality);
+			echo "<a href='".$adflyUrl."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
 		}
 
 		echo "</p>";
