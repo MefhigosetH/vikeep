@@ -34,15 +34,28 @@ if( isset($_GET['id']) && isset($_GET['quality']) ) {
 	if( $count ) {
         if( isset($vikiStreams[$_GET['quality']]) ) {
 			$url = $vikiStreams[$_GET['quality']]['http']['url'];
-            $fp = fopen($url,"rb");
+
+            $ch = @curl_init();
+            @curl_setopt($ch, CURLOPT_URL, $url);
+            @curl_setopt($ch, CURLOPT_RETURNTRANSFER, FALSE);
+            @curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+            //curl_setopt($ch, CURLOPT_HEADER, FALSE);
+            @curl_exec($ch);
+            $info = @curl_getinfo($ch);
+            @curl_close($ch);
 
             @header("Cache-Control: no-cache, must-revalidate");
             @header("Pragma: no-cache");
             @header("Content-Disposition: attachment; filename= ".$_GET['id']."-".$_GET['quality'].".mp4");
-            @header("Content-Type: video/mp4");
+            @header("Content-Type: ".$info['content_type']);
             @header("Content-Transfer-Encoding: binary");
-            ob_end_clean();
+            @header("Content-Length: ".$info['download_content_length']);
+
+
+            $fp = fopen($url,"rb");
+            if(ob_get_length() > 0) { ob_end_clean(); }
             @fpassthru($fp);
+            fclose($fp);
             exit;
         }
 	}
