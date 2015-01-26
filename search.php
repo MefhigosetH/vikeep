@@ -47,7 +47,7 @@ else {
 <div class="container">
 <!-- SearchResults -->
 <div class="page-header">
-<h1>Search results <small>for <?php echo $q; ?></small></h1>
+<h1>Search results <small>for <?php echo htmlentities($q); ?></small></h1>
 </div>
 
 <?php
