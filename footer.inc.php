@@ -5,8 +5,13 @@
 	<p>Powered by <a href='http://www.php.net/' title='PHP: Hypertext Preprocessor'>PHP</a>, <a href='http://twitter.github.io/bootstrap/' title='Twitter Bootstrap'>Bootstrap</a>, <a href='http://git-scm.com/' title='GIT: Fast Version Control'>GIT</a> &amp; <a href='http://en.wikipedia.org/wiki/God' title='The one that create the Universe with a single word'>God</a> | Made in Argentina</p>
 </footer>
 
+<!-- JQuery -->
 <script src="http://code.jquery.com/jquery.js"></script>
+
+<!-- Bootstrap -->
 <script src="js/bootstrap.min.js"></script>
+
+<!-- Google Analytics -->
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -20,3 +25,25 @@
   })();
 
 </script>
+
+<!-- Facebook -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '700737503372205',
+      xfbml      : true,
+      version    : 'v2.2'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
+<!-- Twitter -->
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>

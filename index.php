@@ -205,7 +205,6 @@ elseif( (isset($_POST['q']) && !empty($_POST['q'])) || (isset($_GET['q']) && !em
 }
 else {
 ?>
-<iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2Fvikeep.herokuapp.com&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;font&amp;colorscheme=light&amp;action=like&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe>
 
 <!-- HeroUnit -->
 <div class="hero-unit text-center">
@@ -222,22 +221,15 @@ Vikeep allows you to search your favorite series and download to your computer t
 </blockquote>
 
 <div class="row">
-	<div class="span6">
+	<div class="span4">
 	<div class="page-header">
-		<h1>Blog <small>of news</small></h1>
+		<h1>Facebook <small>fanpage</small></h1>
 	</div>
-	<h3><span class="label label-info">2013-06-30</span> It's alive !</h3>
-	<p>We are on-line now and we are very exiting for this new startup.</p>
-	<p>These are some 'To Do' features that we are working on:</p>
-	<ul>
-		<li>Multi language.</li>
-		<li>Add paging in search results.</li>
-		<li>Add paging in episode list.</li>
-	</ul>
-	<p>Enjoy this site ! Love.</p>
+    <!-- Facebook like box -->
+    <div class="fb-like-box" data-href="https://www.facebook.com/vikeep.page" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
 	</div>
 
-	<div class="span6">
+	<div class="span4">
 	<div class="page-header">
 		<h1>Colaborate <small>with us</small></h1>
 	</div>
@@ -249,8 +241,16 @@ Vikeep allows you to search your favorite series and download to your computer t
 	<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 	<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
 	</form>
-
 	</div>
+
+	<div class="span4">
+	<div class="page-header">
+		<h1>Twitter <small>hashtag</small></h1>
+	</div>
+    <!-- Twitter timeline -->
+    <a class="twitter-timeline"  href="https://twitter.com/hashtag/vikeep" data-widget-id="559595313603026946">Tweets sobre #vikeep</a>
+	</div>
+
 </div>
 <?php
 }
