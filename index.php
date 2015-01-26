@@ -144,54 +144,6 @@ elseif( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 		echo "<p>Sin episodios.</p>";
 	}
 }
-elseif( (isset($_POST['q']) && !empty($_POST['q'])) || (isset($_GET['q']) && !empty($_GET['q'])) ) {
-	$viki = new vikiAPI();
-	$q = "";
-
-	if( isset($_POST['q']) ) {
-		$q = $_POST['q'];
-	}
-	else {
-		$q = $_GET['q'];
-	}
-
-	if( !isset($_GET['page']) ) {
-		$_GET['page'] = 1;
-	}
-	$_GET['page'] = (int) $_GET['page'];
-?>
-<!-- SearchResults -->
-<div class="page-header">
-<h1>Search results <small>for <?php echo $q; ?></small></h1>
-</div>
-<?php
-	$vikiSearch = $viki->search($q,$_GET['page']);
-	$count = count($vikiSearch);
-
-	if( $count ){
-		for( $i=0;$i<$count;$i++) {
-			$id = $vikiSearch[$i]['id'];
-            $type = $vikiSearch[$i]['t'];
-			$title = $vikiSearch[$i]['tt'];
-			$poster = $vikiSearch[$i]['i'];
-
-			if( $type == "series" ) {
-				echo "<div class='hero-unit text-center'>\r\n";
-				echo "<h1>".$title."</h1>\r\n";
-				echo "<span class='label label-success'>".$type."</span>\r\n";
-                echo "<span class='label label-info'>".$vikiSearch[$i]['e']." episodes</span>\r\n";
-				echo "<p><img src='".$poster."' alt='".$title."' class='img-polaroid' /></p>\r\n";
-				echo "<p><a class='btn btn-large btn-primary text-left' href='index.php?serie=".$id."' title='View episodes for ".$title."'><i class='icon-eye-open icon-white'></i> Show episodes</a></p>\r\n";
-				echo "</div>\r\n";
-			}
-		}
-
-		echo "</ul></div>\r\n";
-	}
-	else {
-		echo "<p>No results.</p>";
-	}
-}
 else {
 ?>
 
@@ -199,7 +151,7 @@ else {
 <div class="hero-unit text-center">
 	<h1>Keep viki.com videos, yours.</h1>
 	<p>Search what you want to download from viki.com</p>
-	<form action="index.php" method="post">
+	<form action="search.php" method="post">
 	<input class="input-block-level" id="appendedInputButton" type="text" name="q" autocomplete="off" value="" />
 	<button class="btn btn-large btn-primary" type="submit"><i class="icon-search icon-white"></i> Search!</button>
 	</form>
