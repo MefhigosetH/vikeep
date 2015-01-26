@@ -233,7 +233,7 @@ Vikeep allows you to search your favorite series and download to your computer t
 	<div class="page-header">
 		<h1>Colaborate <small>with us</small></h1>
 	</div>
-	<p>Keep this site free of Ads and on-line. Consider donating.</p>
+	<p>If you enjoy this site, please consider donating.</p>
 	<br />
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="text-center">
 	<input type="hidden" name="cmd" value="_s-xclick">
