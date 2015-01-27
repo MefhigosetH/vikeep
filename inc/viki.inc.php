@@ -25,7 +25,8 @@ class vikiAPI {
 	function search($term,$page=1) {
         // This HTTP request was sniffed from viki.com site...
         //GET http://api.viki.io/v4/search.json?c=dre&licensed=0&per_page=5&with_paywall=1&il=en&cl=en&app=100000a&t=1421888623
-		$url = $this->getUrl("search.json?c=".urlencode($term)."&per_page=5&app=".$_SERVER['APP_ID']);
+		//$url = $this->getUrl("search.json?c=".urlencode($term)."&per_page=5&app=".$_SERVER['APP_ID']);
+        $url = $this->apiUrl.$this->apiPath."search.json?term=".urlencode($term)."&type=series&page=".$page."&app=".$_SERVER['WEB_ID']."&t=".time();
 
 		$response = file_get_contents($url);
 		if( $response === FALSE ) {

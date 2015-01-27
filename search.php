@@ -61,25 +61,55 @@ if( !empty($q) ) {
 
 	$_GET['page'] = (int) $_GET['page'];
 	$vikiSearch = $viki->search($q,$_GET['page']);
-	$count = count($vikiSearch);
+	$count = count($vikiSearch['response']);
 
 	if( $count ){
 		for( $i=0;$i<$count;$i++) {
-			$id = $vikiSearch[$i]['id'];
-            $type = $vikiSearch[$i]['t'];
-			$title = $vikiSearch[$i]['tt'];
-			$poster = $vikiSearch[$i]['i'];
+			$id = $vikiSearch['response'][$i]['id'];
+			$title = $vikiSearch['response'][$i]['titles']['en'];
+			$poster = $vikiSearch['response'][$i]['images']['poster']['url'];
+			$episodes = $vikiSearch['response'][$i]['episodes']['count'];
 
-			if( $type == "series" ) {
+			if( !empty($episodes) ) {
 				echo "<div class='hero-unit text-center'>\r\n";
-				echo "<h1>".$title."</h1>\r\n";
-				echo "<span class='label label-success'>".$type."</span>\r\n";
-                echo "<span class='label label-info'>".$vikiSearch[$i]['e']." episodes</span>\r\n";
+                echo "<h1>".$title."</h1><span class='label label-info'>".$episodes." episodes</span>\r\n";
+                if( $vikiSearch['response'][$i]['flags']['on_air'] == 1 ) { echo "<span class='label label-success'>on-air</span>\r\n"; }
 				echo "<p><img src='".$poster."' alt='".$title."' class='img-polaroid' /></p>\r\n";
-				echo "<p><a class='btn btn-large btn-primary text-left' href='index.php?serie=".$id."' title='View episodes for ".$title."'><i class='icon-eye-open icon-white'></i> Show episodes</a></p>\r\n";
+                if( $vikiSearch['response'][$i]['flags']['hosted'] == 1 ) {
+                    echo "<p><a class='btn btn-large btn-primary text-left' href='index.php?serie=".$id."' title='View episodes for ".$title."'><i class='icon-eye-open icon-white'></i> Show episodes</a></p>\r\n";
+                }
+                else {
+                    echo "<div class='alert alert-info'><h4>External</h4> This serie is not hosted at viki.com</div>\r\n";
+                }
 				echo "</div>\r\n";
 			}
 		}
+
+        echo "<!-- Paging div -->\r\n";
+        echo "<div class='row'>\r\n";
+        echo "<ul class='pager'>\r\n";
+
+        if( $_GET['page']>1 ) {
+            echo "<li class='previous'>\r\n";
+            echo "<a href='?q=".$q."&page=".($_GET['page']-1)."'>&larr; Previous</a>\r\n";
+            echo "</li>\r\n";
+        }
+        else {
+            echo "<li class='previous disabled'>\r\n";
+            echo "<a href='#'>&larr; Previous</a>\r\n";
+            echo "</li>\r\n";
+        }
+
+        if($vikiSearch['more']) {
+            echo "<li class='next'>\r\n";
+            echo "<a href='?q=".$q."&page=".($_GET['page']+1)."'>Next &rarr;</a>\r\n";
+            echo "</li>\r\n";
+        }
+        else {
+            echo "<li class='next disabled'>\r\n";
+            echo "<a href='#'>Next &rarr;</a>\r\n";
+            echo "</li>\r\n";
+        }
 
 		echo "</ul></div>\r\n";
 	}
