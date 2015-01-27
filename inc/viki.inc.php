@@ -37,7 +37,7 @@ class vikiAPI {
 	}
 
 	function episodes($serie,$page=1) {
-		$url = $this->getUrl("containers/".$serie."/episodes.json?page=".$page."&app=".$_SERVER['APP_ID']);
+		$url = $this->apiUrl.$this->apiPath."containers/".$serie."/episodes.json?page=".$page."&app=".$_SERVER['WEB_ID']."&t=".time();
 
 		$response = file_get_contents($url);
 		if( $response === FALSE ) {
@@ -49,13 +49,19 @@ class vikiAPI {
 
 	function streams($episode) {
 		$url = $this->getUrl("videos/".$episode."/streams.json?app=".$_SERVER['APP_ID']);
-
 		$response = file_get_contents($url);
+
 		if( $response === FALSE ) {
 			return FALSE;
 		}
 
-		return json_decode($response,TRUE);
+        $json_response = json_decode($response,TRUE);
+
+        if( isset($json_response['error']) ) {
+            return FALSE;
+        }
+
+		return $json_response;
 	}
 
 	function subtitles($episode,$lang) {
