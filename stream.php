@@ -23,7 +23,7 @@ Legal notice:
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ************************/
-include('functions.inc.php');
+include('inc/functions.inc.php');
 
 if( isset($_GET['id']) && isset($_GET['quality']) ) {
 

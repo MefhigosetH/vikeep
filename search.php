@@ -22,16 +22,16 @@ Legal notice:
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ************************/
-include('functions.inc.php');
+include('inc/functions.inc.php');
 ?>
 <!DOCTYPE html>
 <html>
 
-<? include('header.inc.php'); ?>
+<? include('inc/header.inc.php'); ?>
 
 <body>
 
-<?php include('navbar.inc.php'); ?>
+<?php include('inc/navbar.inc.php'); ?>
 
 <?php
 $q = "";
@@ -93,7 +93,7 @@ else {
 
 </div>
 
-<? include('footer.inc.php'); ?>
+<? include('inc/footer.inc.php'); ?>
 
 </body>
 </html>
