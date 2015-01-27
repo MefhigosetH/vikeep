@@ -24,6 +24,8 @@ Legal notice:
 
 ************************/
 include('inc/functions.inc.php');
+include('inc/viki.inc.php');
+include('inc/adfly.inc.php');
 
 if( isset($_GET['id']) && isset($_GET['quality']) ) {
 

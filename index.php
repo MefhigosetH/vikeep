@@ -23,6 +23,7 @@ Legal notice:
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ************************/
 include('inc/functions.inc.php');
+include('inc/viki.inc.php');
 ?>
 <!DOCTYPE html>
 <html>
