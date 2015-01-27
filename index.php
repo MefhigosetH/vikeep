@@ -24,6 +24,7 @@ Legal notice:
 ************************/
 include('inc/functions.inc.php');
 include('inc/viki.inc.php');
+include('inc/adfly.inc.php');
 ?>
 <!DOCTYPE html>
 <html>
