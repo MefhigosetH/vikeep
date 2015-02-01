@@ -81,9 +81,6 @@ Vikeep allows you to search your favorite series and download to your computer t
 	</div>
 
 </div>
-<?php
-}
-?>
 
 </div>
 
