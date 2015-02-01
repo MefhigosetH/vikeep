@@ -65,7 +65,7 @@ if( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 			echo "<img src='".$poster."' alt='Episode ".$number."' />\r\n";
 			echo "<div class='caption'>\r\n";
 			echo "<h3>Episode ".$number."</h3>\r\n";
-			echo "<p><a href='index.php?episode=".$id."' class='btn btn-primary'><i class='icon-download icon-white'></i> Download</a></p>\r\n";
+			echo "<p><a href='episodes.php?episode=".$id."' class='btn btn-primary'><i class='icon-download icon-white'></i> Download</a></p>\r\n";
 			echo "</div></div></li>\r\n\r\n";
 		}
 		echo "</ul></div>\r\n";
