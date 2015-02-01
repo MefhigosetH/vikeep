@@ -69,12 +69,14 @@ if( !empty($q) ) {
 			$title = $vikiSearch['response'][$i]['titles']['en'];
 			$poster = $vikiSearch['response'][$i]['images']['poster']['url'];
 			$episodes = $vikiSearch['response'][$i]['episodes']['count'];
+            $description = substr($vikiSearch['response'][$i]['descriptions']['en'],0,140);
 
 			if( !empty($episodes) ) {
 				echo "<div class='hero-unit text-center'>\r\n";
                 echo "<h1>".$title."</h1><span class='label label-info'>".$episodes." episodes</span>\r\n";
                 if( $vikiSearch['response'][$i]['flags']['on_air'] == 1 ) { echo "<span class='label label-success'>on-air</span>\r\n"; }
 				echo "<p><img src='".$poster."' alt='".$title."' class='img-polaroid' /></p>\r\n";
+                echo "<p><i>".$description." ...</i></p>";
                 if( $vikiSearch['response'][$i]['flags']['hosted'] == 1 ) {
                     echo "<p><a class='btn btn-large btn-primary text-left' href='series.php?serie=".$id."' title='View episodes for ".$title."'><i class='icon-eye-open icon-white'></i> Show episodes</a></p>\r\n";
                 }
