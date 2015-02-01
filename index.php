@@ -23,8 +23,6 @@ Legal notice:
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ************************/
 include('inc/functions.inc.php');
-include('inc/viki.inc.php');
-include('inc/adfly.inc.php');
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,118 +34,6 @@ include('inc/adfly.inc.php');
 <?php include('inc/navbar.inc.php'); ?>
 
 <div class="container">
-<?php
-if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
-	$viki = new vikiAPI();
-    $adfly = new adflyApi();
-?>
-<!-- EpisodeResults -->
-<div class="page-header">
-<h1>Select your download preferences</h1>
-</div>
-<?php
-	echo "<h3>1. Download subtitles. Choose your lang:</h3>";
-	echo "<p>Right-click -> Save as...</p>";
-	$strEsUrl = $viki->subtitles($_GET['episode'],"es");
-	$strPtUrl = $viki->subtitles($_GET['episode'],"pt");
-	$strEnUrl = $viki->subtitles($_GET['episode'],"en");
-	$strFrUrl = $viki->subtitles($_GET['episode'],"fr");
-	echo "<p>";
-	echo "<a href='".$strEsUrl."' title='Download Spanish subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> Spanish</a>";
-	echo " <a href='".$strPtUrl."' title='Download Português subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> Português</a>";
-	echo " <a href='".$strFrUrl."' title='Download French subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> French</a>";
-	echo " <a href='".$strEnUrl."' title='Download English subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> English</a>";
-	echo "</p>";
-
-	$vikiStreams = $viki->streams($_GET['episode']);
-
-	if( $vikiStreams !== FALSE ) {
-
-		echo "<h3>2. Download video. Choose your quality:</h3>";
-		echo "<p>Click, wait 5 sec, and then click again on the right up corner yellow button.</p>";
-		echo "<p>";
-
-		foreach( $vikiStreams as $quality => $data ) {
-            if( $quality == "external" ) {
-                echo "Sory. No streams available to download :-(";
-            }
-            else {
-                $adflyUrl = $adfly->getLink($_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality);
-			    echo "<a href='".$adflyUrl."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
-            }
-		}
-
-		echo "</p>";
-	}
-}
-elseif( isset($_GET['serie']) && !empty($_GET['serie']) ) {
-	$viki = new vikiAPI();
-
-	if( !isset($_GET['page']) ) {
-		$_GET['page'] = 1;
-	}
-	$_GET['page'] = (int) $_GET['page'];
-?>
-<!-- SerieResults -->
-<div class="page-header">
-<h1>Select your episode</h1>
-</div>
-<?php
-	$vikiEpisodes = $viki->episodes($_GET['serie'],$_GET['page']);
-	$count = count($vikiEpisodes['response']);
-
-	if( $count ) {
-		echo "<div class='row'>\r\n";
-		echo "<ul class='thumbnails'>\r\n";
-		for($i=0;$i<$count;$i++) {
-			$id = $vikiEpisodes['response'][$i]['id'];
-			$number = $vikiEpisodes['response'][$i]['number'];
-			$poster = $vikiEpisodes['response'][$i]['images']['poster']['url'];
-
-			echo "<li class='span6'>\r\n";
-			echo "<div class='thumbnail'>\r\n";
-			echo "<img src='".$poster."' alt='Episode ".$number."' />\r\n";
-			echo "<div class='caption'>\r\n";
-			echo "<h3>Episode ".$number."</h3>\r\n";
-			echo "<p><a href='index.php?episode=".$id."' class='btn btn-primary'><i class='icon-download icon-white'></i> Download</a></p>\r\n";
-			echo "</div></div></li>\r\n\r\n";
-		}
-		echo "</ul></div>\r\n";
-
-		echo "<!-- Paging div -->\r\n";
-		echo "<div class='row'>\r\n";
-		echo "<ul class='pager'>\r\n";
-
-		if( $_GET['page']>1 ) {
-			echo "<li class='previous'>\r\n";
-			echo "<a href='?serie=".$_GET['serie']."&page=".($_GET['page']-1)."'>&larr; Previous</a>\r\n";
-			echo "</li>\r\n";
-		}
-		else {
-			echo "<li class='previous disabled'>\r\n";
-			echo "<a href='#'>&larr; Previous</a>\r\n";
-			echo "</li>\r\n";
-		}
-
-		if($vikiEpisodes['more']) {
-			echo "<li class='next'>\r\n";
-			echo "<a href='?serie=".$_GET['serie']."&page=".($_GET['page']+1)."'>Next &rarr;</a>\r\n";
-			echo "</li>\r\n";
-		}
-		else {
-			echo "<li class='next disabled'>\r\n";
-			echo "<a href='#'>Next &rarr;</a>\r\n";
-			echo "</li>\r\n";
-		}
-
-		echo "</ul></div>\r\n";
-	}
-	else {
-		echo "<p>Sin episodios.</p>";
-	}
-}
-else {
-?>
 
 <!-- HeroUnit -->
 <div class="hero-unit text-center">
