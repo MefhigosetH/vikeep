@@ -1,7 +1,7 @@
 <?php
 /************************
 File:		series.php
-Date:		2013-06-20
+Date:		2015-02-01
 Brief:		Series routine file for viki.
 
 Legal notice:

@@ -1,7 +1,7 @@
 <?php
 /************************
 File:		search.php
-Date:		2014-01-26
+Date:		2015-01-26
 Brief:		Search engine routine file.
 
 Legal notice:

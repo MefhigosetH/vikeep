@@ -1,7 +1,7 @@
 <?php
 /************************
 File:		episodes.php
-Date:		2013-06-20
+Date:		2015-02-01
 Brief:		Episodes routine file.
 
 Legal notice:
