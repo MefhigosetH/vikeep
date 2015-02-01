@@ -47,6 +47,22 @@ if( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 <!-- SerieResults -->
 <div class="page-header">
 <h1>Select your episode</h1>
+
+<!-- start Add banner -->
+<fieldset><legend>Propaganda</legend>
+<script type="text/javascript">
+  ( function() {
+    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+    var unit = {"calltype":"async[2]","publisher":"MefhigosetH","width":468,"height":60,"sid":"Chitika Default"};
+    var placement_id = window.CHITIKA.units.length;
+    window.CHITIKA.units.push(unit);
+    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+}());
+</script>
+<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+</fieldset>
+<!-- End Add banner -->
+
 </div>
 <?php
 	$vikiEpisodes = $viki->episodes($_GET['serie'],$_GET['page']);

@@ -49,6 +49,21 @@ include('inc/functions.inc.php');
 Vikeep allows you to search your favorite series and download to your computer the chapters and subtitles you want. All for free ;-)<small>About this site</small>
 </blockquote>
 
+<!-- start Add banner -->
+<fieldset><legend>Propaganda</legend>
+<script type="text/javascript">
+  ( function() {
+    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
+    var unit = {"calltype":"async[2]","publisher":"MefhigosetH","width":728,"height":90,"sid":"Chitika Default"};
+    var placement_id = window.CHITIKA.units.length;
+    window.CHITIKA.units.push(unit);
+    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
+}());
+</script>
+<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
+</fieldset>
+<!-- End Add banner -->
+
 <div class="row">
 	<div class="span4">
 	<div class="page-header">
