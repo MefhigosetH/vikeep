@@ -46,18 +46,7 @@ if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 <h1>Select your download preferences</h1>
 
 <!-- start Add banner -->
-<fieldset><legend>Propaganda</legend>
-<script type="text/javascript">
-  ( function() {
-    if (window.CHITIKA === undefined) { window.CHITIKA = { 'units' : [] }; };
-    var unit = {"calltype":"async[2]","publisher":"MefhigosetH","width":468,"height":60,"sid":"Chitika Default"};
-    var placement_id = window.CHITIKA.units.length;
-    window.CHITIKA.units.push(unit);
-    document.write('<div id="chitikaAdBlock-' + placement_id + '"></div>');
-}());
-</script>
-<script type="text/javascript" src="//cdn.chitika.net/getads.js" async></script>
-</fieldset>
+<?php include("inc/propaganda.inc.php"); ?>
 <!-- End Add banner -->
 
 </div>
