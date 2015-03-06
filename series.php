@@ -22,8 +22,9 @@ Legal notice:
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ************************/
-include('inc/functions.inc.php');
-include('inc/viki.inc.php');
+include("inc/functions.inc.php");
+include("inc/viki.inc.php");
+include("inc/propaganda.inc.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,21 +45,25 @@ if( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 	}
 	$_GET['page'] = (int) $_GET['page'];
 ?>
+
+<!-- Start add banner -->
+<?php
+$propaganda = new propaganda();
+$propaganda->printCurrAdd();
+?>
+<!-- End add banner -->
+
 <!-- SerieResults -->
 <div class="page-header">
 <h1>Select your episode</h1>
-
-<!-- start Add banner -->
-<?php include("inc/propaganda.inc.php"); ?>
-<!-- End Add banner -->
-
 </div>
+
 <?php
 	$vikiEpisodes = $viki->episodes($_GET['serie'],$_GET['page']);
 	$count = count($vikiEpisodes['response']);
 
 	if( $count ) {
-		echo "<div class='row'>\r\n";
+		//echo "<div class='row'>\r\n";
 		echo "<ul class='thumbnails'>\r\n";
 		for($i=0;$i<$count;$i++) {
 			$id = $vikiEpisodes['response'][$i]['id'];
@@ -73,10 +78,18 @@ if( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 			echo "<p><a href='episodes.php?episode=".$id."' class='btn btn-primary'><i class='icon-download icon-white'></i> Download</a></p>\r\n";
 			echo "</div></div></li>\r\n\r\n";
 		}
-		echo "</ul></div>\r\n";
+		echo "</ul>\r\n";
+        ?>
 
+<!-- Start add banner -->
+<?php
+$propaganda = new propaganda();
+$propaganda->printCurrAdd();
+?>
+<!-- End add banner -->
+
+<?php
 		echo "<!-- Paging div -->\r\n";
-		echo "<div class='row'>\r\n";
 		echo "<ul class='pager'>\r\n";
 
 		if( $_GET['page']>1 ) {
@@ -101,7 +114,7 @@ if( isset($_GET['serie']) && !empty($_GET['serie']) ) {
 			echo "</li>\r\n";
 		}
 
-		echo "</ul></div>\r\n";
+		echo "</ul>\r\n";
 	}
 	else {
 		echo "<p>Sin episodios.</p>";

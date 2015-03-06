@@ -22,8 +22,9 @@ Legal notice:
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ************************/
-include('inc/functions.inc.php');
-include('inc/viki.inc.php');
+include("inc/functions.inc.php");
+include("inc/viki.inc.php");
+include("inc/propaganda.inc.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -46,14 +47,17 @@ else {
 ?>
 
 <div class="container">
+
+<!-- Start add banner -->
+<?php
+$propaganda = new propaganda();
+$propaganda->printCurrAdd();
+?>
+<!-- End add banner -->
+
 <!-- SearchResults -->
 <div class="page-header">
 <h1>Search results <small>for <?php echo htmlentities($q); ?></small></h1>
-
-<!-- start Add banner -->
-<?php include("inc/propaganda.inc.php"); ?>
-<!-- End Add banner -->
-
 </div>
 
 <?php
@@ -91,9 +95,17 @@ if( !empty($q) ) {
 				echo "</div>\r\n";
 			}
 		}
+        ?>
 
+<!-- Start add banner -->
+<?php
+$propaganda = new propaganda();
+$propaganda->printCurrAdd();
+?>
+<!-- End add banner -->
+
+<?php
         echo "<!-- Paging div -->\r\n";
-        echo "<div class='row'>\r\n";
         echo "<ul class='pager'>\r\n";
 
         if( $_GET['page']>1 ) {
@@ -118,7 +130,7 @@ if( !empty($q) ) {
             echo "</li>\r\n";
         }
 
-		echo "</ul></div>\r\n";
+		echo "</ul>\r\n";
 	}
 	else {
 		echo "<p>No results.</p>";

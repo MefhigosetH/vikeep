@@ -22,9 +22,10 @@ Legal notice:
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ************************/
-include('inc/functions.inc.php');
-include('inc/viki.inc.php');
-include('inc/adfly.inc.php');
+include("inc/functions.inc.php");
+include("inc/viki.inc.php");
+include("inc/adfly.inc.php");
+include("inc/propaganda.inc.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,18 +37,23 @@ include('inc/adfly.inc.php');
 <?php include('inc/navbar.inc.php'); ?>
 
 <div class="container">
+
 <?php
 if( isset($_GET['episode']) && !empty($_GET['episode']) ) {
 	$viki = new vikiAPI();
     $adfly = new adflyApi();
 ?>
+
+<!-- Start add banner -->
+<?php
+$propaganda = new propaganda();
+$propaganda->printCurrAdd();
+?>
+<!-- End add banner -->
+
 <!-- EpisodeResults -->
 <div class="page-header">
 <h1>Select your download preferences</h1>
-
-<!-- start Add banner -->
-<?php include("inc/propaganda.inc.php"); ?>
-<!-- End Add banner -->
 
 </div>
 <?php
