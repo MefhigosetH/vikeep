@@ -22,7 +22,8 @@ Legal notice:
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 ************************/
-include('inc/functions.inc.php');
+include("inc/functions.inc.php");
+include("inc/propaganda.inc.php");
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,9 +50,12 @@ include('inc/functions.inc.php');
 Vikeep allows you to search your favorite series and download to your computer the chapters and subtitles you want. All for free ;-)<small>About this site</small>
 </blockquote>
 
-<!-- start Add banner -->
-<?php include("inc/propaganda.inc.php"); ?>
-<!-- End Add banner -->
+<!-- Start add banner -->
+<?php
+$propaganda = new propaganda();
+$propaganda->printCurrAdd();
+?>
+<!-- End add banner -->
 
 <div class="row">
 	<div class="span4">
