@@ -53,7 +53,7 @@ Vikeep allows you to search your favorite series and download to your computer t
 <!-- Start add banner -->
 <?php
 $propaganda = new propaganda();
-$propaganda->printCurrAdd();
+$propaganda->printRandAdd();
 ?>
 <!-- End add banner -->
 

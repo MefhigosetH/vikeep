@@ -51,7 +51,7 @@ else {
 <!-- Start add banner -->
 <?php
 $propaganda = new propaganda();
-$propaganda->printCurrAdd();
+$propaganda->printRandAdd();
 ?>
 <!-- End add banner -->
 
