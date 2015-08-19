@@ -14,7 +14,7 @@ class propaganda {
     function __construct() {
         //$this->banners['propeller'] = "<iframe src='//go.padstm.com/?id=199127&t=iframe' style='width:728px;height:90px;border:0;overflow:hidden;'></iframe>\r\n";
         //$this->banners['fidelity'] = "<!-- BEGIN JS TAG - vikeep.herokuapp.com 728x90 < - DO NOT MODIFY -->\r\n<SCRIPT SRC='http://ib.adnxs.com/ttj?id=4361434&size=728x90&promo_sizes=300x50,320x50,468x60,216x36&promo_alignment=center' TYPE='text/javascript'>\r\n</SCRIPT>\r\n<!-- END TAG -->\r\n";
-        $this->banners['queuemetrics'] = "<a href='https://queuemetrics.herokuapp.com/'><img src='https://www.anony.ws/i/2015/08/09/qm-licenses.png' alt='Get your QueueMetrics license today at 20% of the real price!' /></a>";
+        $this->banners['queuemetrics'] = "<a href='http://www.qm-licenses.com/'><img src='http://www.qm-licenses.com/img/qm-licenses.png' alt='Get your QueueMetrics license today at 20% of the real price!' /></a>";
         $this->banners['qadabra'] = "<script type='text/javascript' src='http://ads.qadservice.com/t?id=76acf683-cff8-472a-851c-379550dae522&size=728x90'></script>";
     }
 
