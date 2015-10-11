@@ -87,7 +87,7 @@ if( !empty($q) ) {
 				echo "<p><img src='".$poster."' alt='".$title."' class='img-polaroid' /></p>\r\n";
                 echo "<p><i>".$description." ...</i></p>";
                 if( $vikiSearch['response'][$i]['flags']['hosted'] == 1 ) {
-                    echo "<p><a class='btn btn-large btn-primary text-left' href='series.php?serie=".$id."' title='View episodes for ".$title."'><i class='icon-eye-open icon-white'></i> Show episodes</a></p>\r\n";
+                    echo "<p><a class='btn btn-large btn-primary text-left' href='series.php?serie=".$id."&utm_source=vikeep&utm_medium=series&utm_campaign=".$id."' title='View episodes for ".$title."'><i class='icon-eye-open icon-white'></i> Show episodes</a></p>\r\n";
                 }
                 else {
                     echo "<div class='alert alert-info'><h4>External</h4> This serie is not hosted at viki.com</div>\r\n";
