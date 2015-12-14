@@ -59,10 +59,10 @@ $propaganda->printRandAdd();
 <?php
 	echo "<h3>1. Download subtitles. Choose your lang:</h3>";
 	echo "<p>Right-click -> Save as...</p>";
-	$strEsUrl = $adfly->getLink($viki->subtitles($_GET['episode'],"es"));
-	$strPtUrl = $adfly->getLink($viki->subtitles($_GET['episode'],"pt"));
-	$strEnUrl = $adfly->getLink($viki->subtitles($_GET['episode'],"en"));
-	$strFrUrl = $adfly->getLink($viki->subtitles($_GET['episode'],"fr"));
+	$strEsUrl = $viki->subtitles($_GET['episode'],"es");
+	$strPtUrl = $viki->subtitles($_GET['episode'],"pt");
+	$strEnUrl = $viki->subtitles($_GET['episode'],"en");
+	$strFrUrl = $viki->subtitles($_GET['episode'],"fr");
 	echo "<p>";
 	echo "<a href='".$strEsUrl."' title='Download Spanish subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> Spanish</a>";
 	echo " <a href='".$strPtUrl."' title='Download Português subtitles' class='btn btn-large btn-primary'><i class='icon-list-alt icon-white'></i> Português</a>";
@@ -83,7 +83,7 @@ $propaganda->printRandAdd();
                 echo "Sory. No streams available to download :-(";
             }
             else {
-                $adflyUrl = $adfly->getLink($_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality);
+                $adflyUrl = $_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality;
 			    echo "<a href='".$adflyUrl."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
             }
 		}
