@@ -83,7 +83,7 @@ $propaganda->printRandAdd();
                 echo "Sory. No streams available to download :-(";
             }
             else {
-                $adflyUrl = "https://".$_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality;
+                $adflyUrl = "http://www.".$_SERVER['SERVER_NAME']."/stream.php?id=".$_GET['episode']."&quality=".$quality;
 			    echo "<a href='".$adflyUrl."' title='Download video in ".$quality."' class='btn btn-large btn-primary'><i class='icon-download-alt icon-white'></i> ".$quality."</a> ";
             }
 		}
