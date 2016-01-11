@@ -28,7 +28,7 @@ include("inc/propaganda.inc.php");
 <!DOCTYPE html>
 <html>
 
-<? include('inc/header.inc.php'); ?>
+<?php include('inc/header.inc.php'); ?>
 
 <body>
 
@@ -92,7 +92,7 @@ $propaganda->printRandAdd();
 
 </div>
 
-<? include('inc/footer.inc.php'); ?>
+<?php include('inc/footer.inc.php'); ?>
 
 </body>
 </html>
